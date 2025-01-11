@@ -3,15 +3,14 @@ import numpy as np
 import scipy
 import nltk
 from nltk import word_tokenize
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-
 import tqdm
 import time
 import copy
 import evaluation_script.properties as properties
 import google.generativeai as genai
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 def pairwise_meteor(candidate, reference):
     return nltk.translate.meteor_score.single_meteor_score(word_tokenize(reference), word_tokenize(candidate))
