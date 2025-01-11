@@ -36,6 +36,8 @@ def install_local_package(folder_name):
 install("scipy")
 install("nltk")
 install("numpy")
+install("aenum")
+install("google-generativeai==0.8.3")
 
 # install("shapely==1.7.1")
 # install("requests==2.25.1")
