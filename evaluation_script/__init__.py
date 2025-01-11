@@ -33,8 +33,12 @@ def install_local_package(folder_name):
     ]
 )
 
-install("shapely==1.7.1")
-install("requests==2.25.1")
+install("scipy")
+install("nltk")
+install("numpy")
+
+# install("shapely==1.7.1")
+# install("requests==2.25.1")
 
 install_local_package("package_folder_name")
 
