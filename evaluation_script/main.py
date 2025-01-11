@@ -3,6 +3,10 @@ import numpy as np
 import scipy
 import nltk
 from nltk import word_tokenize
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
 import tqdm
 import time
 import copy
