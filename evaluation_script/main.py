@@ -10,7 +10,7 @@ nltk.download('omw-1.4')
 import tqdm
 import time
 import copy
-from evaluation_script.properties as properties
+import evaluation_script.properties as properties
 import google.generativeai as genai
 
 def pairwise_meteor(candidate, reference):
