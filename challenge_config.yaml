@@ -1,17 +1,17 @@
 # If you are not sure what all these fields mean, please refer our documentation here:
 # https://evalai.readthedocs.io/en/latest/configuration.html
-title: Random Number Generator Challenge
-short_description: Random number generation challenge for each submission
+title: "AVeriTeC - Automated Verification of Textual Claims"
+short_description: "The AVeriTeC challenge aims to evaluate the ability of systems to verify real-world claims with evidence from the Web."
 description: templates/description.html
 evaluation_details: templates/evaluation_details.html
 terms_and_conditions: templates/terms_and_conditions.html
 image: logo.jpg
 submission_guidelines: templates/submission_guidelines.html
-leaderboard_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras egestas a libero nec sagittis.
+leaderboard_description: "The AVeriTeC leaderbord. The primary metric to evaluate system submissions is the EV2R score."
 evaluation_script: evaluation_script.zip
 remote_evaluation: False
 is_docker_based: False
-start_date: 2019-01-01 00:00:00
+start_date: 2025-01-05 00:00:00
 end_date: 2099-05-31 23:59:59
 published: True
 
@@ -19,107 +19,103 @@ leaderboard:
   - id: 1
     schema:
       {
-        "labels": ["Metric1", "Metric2", "Metric3", "Total"],
-        "default_order_by": "Total",
-        "metadata": {
-          "Metric1": {
-            "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          },
-          "Metric2": {
-            "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          }
-        }
+        "labels": ["EV2R Score"],
+        "default_order_by": "EV2R Score",
       }
 
 challenge_phases:
   - id: 1
     name: Dev Phase
     description: templates/challenge_phase_1_description.html
-    leaderboard_public: False
-    is_public: True
-    is_submission_public: True
-    start_date: 2019-01-19 00:00:00
-    end_date: 2099-04-25 23:59:59
-    test_annotation_file: annotations/test_annotations_devsplit.json
-    codename: dev
-    max_submissions_per_day: 5
-    max_submissions_per_month: 50
-    max_submissions: 50
-    default_submission_meta_attributes:
-      - name: method_name
-        is_visible: True
-      - name: method_description
-        is_visible: True
-      - name: project_url
-        is_visible: True
-      - name: publication_url
-        is_visible: True
-    submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
-        type: text
-        required: False
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
-        type: boolean
-        required: True
-    is_restricted_to_select_one_submission: False
-    is_partial_submission_evaluation_enabled: False
-    allowed_submission_file_types: ".json, .zip, .txt, .tsv, .gz, .csv, .h5, .npy, .npz"
-  - id: 2
-    name: Test Phase
-    description: templates/challenge_phase_2_description.html
     leaderboard_public: True
     is_public: True
     is_submission_public: True
-    start_date: 2019-01-01 00:00:00
-    end_date: 2099-05-24 23:59:59
-    test_annotation_file: annotations/test_annotations_testsplit.json
-    codename: test
-    max_submissions_per_day: 5
-    max_submissions_per_month: 50
-    max_submissions: 50
+    start_date: 2025-01-05 00:00:00
+    end_date: 2099-01-31 23:59:59
+    test_annotation_file: annotations/averitec_dev_gold.json
+    codename: dev
+    max_submissions_per_day: 10
+    max_submissions_per_month: 300
+    max_submissions: 500
     default_submission_meta_attributes:
-      - name: method_name
-        is_visible: True
-      - name: method_description
-        is_visible: True
-      - name: project_url
-        is_visible: True
-      - name: publication_url
-        is_visible: True
+    - name: method_name
+      is_visible: False
+    - name: method_description
+      is_visible: False
+    - name: project_url
+      is_visible: True
     submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
-        type: text
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
-        type: boolean
+    - name: system_name
+      description: Name of the system.
+      is_visible: True
+      type: text
+      required: True
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
+    allowed_submission_file_types: ".json"
+  - id: 2
+    name: Test Phase
+    description: templates/challenge_phase_2_description.html
+    leaderboard_public: False
+    is_public: True
+    is_submission_public: True
+    start_date: 2025-04-17 00:00:00
+    end_date: 2025-05-10 23:59:59
+    test_annotation_file: annotations/averitec_test_gold.json
+    codename: test
+    max_submissions_per_day: 5
+    max_submissions_per_month: 5
+    max_submissions: 5
+    default_submission_meta_attributes:
+    - name: method_name
+      is_visible: False
+    - name: method_description
+      is_visible: False
+    - name: project_url
+      is_visible: True
+    submission_meta_attributes:
+    - name: system_name
+      description: Name of the system.
+      is_visible: True
+      type: text
+      required: True
+    is_restricted_to_select_one_submission: False
+    is_partial_submission_evaluation_enabled: False
+    allowed_submission_file_types: ".json"
+  - id: 3
+    name: "After Competition: Test Phase"
+    description: templates/challenge_phase_3_description.html
+    leaderboard_public: False
+    is_public: True
+    is_submission_public: True
+    start_date: 2025-08-03 00:00:00
+    end_date: 2099-01-31 23:59:59
+    test_annotation_file: annotations/averitec_test_gold.json
+    codename: after_test
+    max_submissions_per_day: 5
+    max_submissions_per_month: 5
+    max_submissions: 20
+    default_submission_meta_attributes:
+    - name: method_name
+      is_visible: False
+    - name: method_description
+      is_visible: False
+    - name: project_url
+      is_visible: True
+    submission_meta_attributes:
+    - name: system_name
+      description: Name of the system.
+      is_visible: True
+      type: text
+      required: True
+    is_restricted_to_select_one_submission: False
+    is_partial_submission_evaluation_enabled: False
+    allowed_submission_file_types: ".json"
 
 dataset_splits:
   - id: 1
-    name: Train Split
-    codename: train_split
+    name: Development Split
+    codename: dev_split
   - id: 2
     name: Test Split
     codename: test_split
@@ -128,18 +124,18 @@ challenge_phase_splits:
   - challenge_phase_id: 1
     leaderboard_id: 1
     dataset_split_id: 1
-    visibility: 1
-    leaderboard_decimal_precision: 2
-    is_leaderboard_order_descending: True
-  - challenge_phase_id: 2
-    leaderboard_id: 1
-    dataset_split_id: 1
     visibility: 3
     leaderboard_decimal_precision: 2
     is_leaderboard_order_descending: True
   - challenge_phase_id: 2
     leaderboard_id: 1
     dataset_split_id: 2
-    visibility: 1
+    visibility: 3
+    leaderboard_decimal_precision: 2
+    is_leaderboard_order_descending: True
+  - challenge_phase_id: 3
+    leaderboard_id: 1
+    dataset_split_id: 2
+    visibility: 3
     leaderboard_decimal_precision: 2
     is_leaderboard_order_descending: True
